@@ -28,8 +28,16 @@ class PointsCounter extends StatelessWidget {
             Row(
               children: [
                 teamInfo("Team A"),
+                SizedBox(
+                  height: 450,
+                  child: VerticalDivider(thickness: 1, color: Colors.grey, indent: 40,),
+                ),
                 teamInfo("Team B"),
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 140.0),
+              child: SizedBox(width: 170, child: button("Reset")),
             ),
           ],
         ),
@@ -38,27 +46,40 @@ class PointsCounter extends StatelessWidget {
   }
 
   Widget button(String info) {
-    return ElevatedButton(
-      onPressed: () {},
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.orange,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5), // Adjust the radius as needed
+    return SizedBox(
+      width: 130,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6.0),
+        child: ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.orange,
+            elevation: 3.0,
+            shadowColor: const Color.fromARGB(255, 213, 213, 213),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                5,
+              ), // Adjust the radius as needed
+            ),
+          ),
+          child: Text(info, style: TextStyle(color: Colors.black)),
         ),
       ),
-      child: Text(info, style: TextStyle(color: Colors.white)),
     );
   }
 
   Widget teamInfo(String teamName) {
-    return Column(
-      children: [
-        Text(teamName, style: TextStyle(fontSize: 32)),
-        Text("0", style: TextStyle(fontSize: 150)),
-        button("Add 1 Point  "),
-        button("Add 2 Points"),
-        button("Add 3 Points"),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 29.0, vertical: 20),
+      child: Column(
+        children: [
+          Text(teamName, style: TextStyle(fontSize: 32)),
+          Text("0", style: TextStyle(fontSize: 150)),
+          button("Add 1 Point  "),
+          button("Add 2 Points"),
+          button("Add 3 Points"),
+        ],
+      ),
     );
   }
 }
