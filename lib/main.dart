@@ -25,15 +25,23 @@ class PointsCounter extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Row(
-              children: [
-                teamInfo("Team A"),
-                SizedBox(
-                  height: 450,
-                  child: VerticalDivider(thickness: 1, color: Colors.grey, indent: 40,),
-                ),
-                teamInfo("Team B"),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(top:15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  teamInfo("Team A"),
+                  SizedBox(
+                    height: 450,
+                    child: VerticalDivider(
+                      thickness: 1,
+                      color: const Color.fromARGB(255, 200, 200, 200),
+                      indent: 40,
+                    ),
+                  ),
+                  teamInfo("Team B"),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 140.0),
@@ -46,32 +54,30 @@ class PointsCounter extends StatelessWidget {
   }
 
   Widget button(String info) {
-    return SizedBox(
-      width: 130,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 6.0),
-        child: ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.orange,
-            elevation: 3.0,
-            shadowColor: const Color.fromARGB(255, 213, 213, 213),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                5,
-              ), // Adjust the radius as needed
-            ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6.0),
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size(100, 40),
+          backgroundColor: Colors.orange,
+          elevation: 3.0,
+          shadowColor: const Color.fromARGB(255, 213, 213, 213),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+              5,
+            ), // Adjust the radius as needed
           ),
-          child: Text(info, style: TextStyle(color: Colors.black)),
         ),
+        child: Text(info, style: TextStyle(color: Colors.black)),
       ),
     );
   }
 
   Widget teamInfo(String teamName) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 29.0, vertical: 20),
-      child: Column(
+    return 
+      
+       Column(
         children: [
           Text(teamName, style: TextStyle(fontSize: 32)),
           Text("0", style: TextStyle(fontSize: 150)),
@@ -79,7 +85,6 @@ class PointsCounter extends StatelessWidget {
           button("Add 2 Points"),
           button("Add 3 Points"),
         ],
-      ),
     );
   }
 }
